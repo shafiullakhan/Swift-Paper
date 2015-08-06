@@ -31,7 +31,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate,UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.baseController.collectionView?.frame = UIScreen.mainScreen().bounds;
         self.view.addSubview(self.baseController.collectionView!)
         
         // Init mainView

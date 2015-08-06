@@ -8,6 +8,8 @@
 
 import UIKit
 
+let iPhone5 =  (UIScreen.instancesRespondToSelector("currentMode") ? CGSizeEqualToSize(CGSizeMake(640, 1136),UIScreen.mainScreen().currentMode!.size) : false)
+
 class CollectionViewSmallLayout: UICollectionViewFlowLayout {
     
     required init(coder aDecoder: NSCoder) {
@@ -19,7 +21,7 @@ class CollectionViewSmallLayout: UICollectionViewFlowLayout {
         super.init();
         
         self.itemSize = CGSizeMake(142, 254)//CGSizeMake(CGRectGetWidth(UIScreen.mainScreen().bounds) - 30.0, CGRectGetHeight(UIScreen.mainScreen().bounds) - 100);
-        self.sectionInset = UIEdgeInsetsMake(((UIScreen.mainScreen().bounds.size.height == 568) ? 314 : 224), 2, 0, 2)//UIEdgeInsetsMake(224, 2, 0, 2);
+        self.sectionInset = UIEdgeInsetsMake((iPhone5 ? 314 : 224), 2, 0, 2)//UIEdgeInsetsMake(224, 2, 0, 2);
         self.minimumInteritemSpacing = 10.0;
         self.minimumLineSpacing = 10.0;
         self.scrollDirection = .Horizontal;

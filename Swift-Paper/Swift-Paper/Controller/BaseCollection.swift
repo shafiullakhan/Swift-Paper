@@ -92,16 +92,11 @@ class BaseCollection: UICollectionViewController, UIGestureRecognizerDelegate {
     }
 
     override func collectionView(collectionView: UICollectionView, transitionLayoutForOldLayout fromLayout: UICollectionViewLayout, newLayout toLayout: UICollectionViewLayout) -> UICollectionViewTransitionLayout! {
-        let transitionLayout = UICollectionViewTransitionLayout(currentLayout: fromLayout, nextLayout: toLayout) as! TransitionLayout
+        let transitionLayout = TransitionLayout(currentLayout: fromLayout, nextLayout: toLayout, itemSize :(toBeExpandedFlag ? smallLayout.itemSize : largeLayout.itemSize))
         
         return transitionLayout;
     }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
-    {
-        return collectionView.frame.size;
-    }
-    
+
     // MARK: Gesture Delegate
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return false;
